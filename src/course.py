@@ -10,6 +10,7 @@ class Course:
         self._readFile(filename)
 
     def _readFile(self, filename):
+        """Read the file and create the holes"""
         with open(filename, 'r') as f:
             lines = f.readlines()
             for line in lines:
@@ -23,6 +24,7 @@ class Course:
         return self._name
 
     def getPlaySchedule(self, teeTime):
+        """Get the play schedule for the course"""
         print("Tee Off Time: {}".format(teeTime))
         print("Course: {} \t\t Total PAR: {}".format(self._name, self._totalPar))
         print("Hole\t PAR\t Index\t Distance\t Start\t Finish")
@@ -31,6 +33,7 @@ class Course:
                   hole.getDistance(), teeTime, teeTime + datetime.timedelta(seconds=hole.getDuration())))
 
     def __str__(self):
+        """String representation of the course"""
         out = "Course: {} \t\t Total PAR: {}\n".format(
             self._name, self._totalPar)
         out += "Hole\t PAR\t Index\t Distance\n"
