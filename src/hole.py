@@ -1,21 +1,6 @@
-'''
-Implement the Hole class, which models a single hole on a golf course.
- Instance variables:
-o _number: an integer number from 1 to 18, indicating the order of play.
-o _par: PAR indicates the number of strokes a golfer is expected to complete
-playing of the hole.
-o _distance: representing the length of the hole in meters, from tee box to the
-pin/cup.
-o _index: an integer number from 1 to 18, representing the difficulty ranking
-of the hole in a golf course, with a lower number signifying a more difficult
-hole.
- Method getDuration computes the estimated time to complete playing the hole.
-The formula to compute the duration is “Setup time + Play time”, in seconds, as
-illustrated below in Figure 2
-'''
-
-
 from switch import Switch
+
+"""Hole class"""
 
 
 class Hole:
@@ -26,6 +11,10 @@ class Hole:
         self._index = index
 
     def getDuration(self):
+        """Get duration of the hole playtime in seconds
+        Returns:
+            int: duration of the hole playtime in seconds
+        """
         getSetupTime = Switch({
             range(1, 7): self._par * 180,
             range(7, 13): self._par * 150,
