@@ -1,8 +1,5 @@
 from switch import Switch
 
-"""Hole class"""
-
-
 class Hole:
     def __init__(self, number, par, distance, index):
         self._number = number
