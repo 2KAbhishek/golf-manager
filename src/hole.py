@@ -35,6 +35,10 @@ class Hole:
 
         return setupTime + playTime
 
+    def __str__(self):
+        """String representation of the hole"""
+        return "Hole {}: PAR {} Index {} Distance {}m".format(self._number, self._par, self._index, self._distance)
+
     def getNumber(self):
         return self._number
 
