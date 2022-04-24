@@ -1,9 +1,54 @@
 from course import Course
 from flight import Flight
 from golf_club import GolfClub
+from golfing_exception import GolfingException
 
 
-def display_menu(golfingDate):
+def submitBooking(golfClub):
+
+    print("""
+Enter 3 or 4 golfers to form a flight
+=====================================
+""")
+    golfers = []
+    for i in range(3):
+        print("Enter ID for golfer {} or -1 to stop: ".format(i+1))
+        id = int(input())
+        if id == -1:
+            break
+        golfers.append(golfClub.searchGolfer(id))
+    flight = Flight(golfers)
+    print("""
+List of available tee times
+=========================
+""")
+    for index, teeTime in enumerate(golfClub.getEmptyTeeTimes()):
+        print("{}. {}".format(index, teeTime))
+
+    print("Enter option: ")
+    selection = int(input())
+    if selection in golfClub.teeTimes:
+        golfClub.addBooking(selection, flight)
+        print("Tee time {} booked for flight with golfers {}".format(
+            selection, golfers))
+    else:
+        print("Invalid option")
+        submitBooking(golfClub)
+
+    if golfClub.searchBooking(flight.teeTime) != None:
+        raise GolfingException("Tee time is already booked")
+    for memberID, golfer in golfClub.golfers.items():
+        if golfer.booking != None:
+            raise GolfingException(
+                "Booking has failed as one member already has another booking")
+    if golfClub.golfingDate.weekday() == 5 or golfClub.golfingDate.weekday() == 6:
+        if not flight.getWeekendEligibility():
+            raise GolfingException(
+                "Booking has failed as flight is not eligible to play on weekend")
+    golfClub.bookings[flight.teeTime] = flight
+
+
+def display_menu(golfClub):
     print("""
 Golf Booking for {} Sunday
 ======================================
@@ -13,11 +58,11 @@ Golf Booking for {} Sunday
 4. Print Play Schedule
 5. Overview of Tee Schedule
 0. Exit
-Enter option: """.format(golfingDate.strftime("%A")))
+Enter option: """.format(golfClub.golfingDate.strftime("%A")))
 
     selection = int(input())
     if selection == 1:
-        submit_booking()
+        submitBooking(golfClub)
     elif selection == 2:
         cancel_booking()
     elif selection == 3:
@@ -54,4 +99,4 @@ if __name__ == "__main__":
         9), golfClub.searchGolfer(27), golfClub.searchGolfer(24)])
     golfClub.addBooking("07:58", flight3)
 
-    display_menu(golfingDate)
+    display_menu(golfClub)
