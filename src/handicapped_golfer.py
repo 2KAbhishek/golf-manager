@@ -1,9 +1,9 @@
 from golfer import Golfer
 
 class HandicappedGolfer(Golfer):
-    def __init__(self, name, membership):
+    def __init__(self, name, membership, handicap):
         super().__init__(name, membership)
-        self._handicap = 0
+        self._handicap = handicap
 
     def getHandicap(self):
         return self._handicap
