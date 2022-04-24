@@ -48,7 +48,19 @@ List of available tee times
     golfClub.bookings[flight.teeTime] = flight
 
 
-def display_menu(golfClub):
+def cancelBooking(golfClub):
+    print("Enter member ID to cancel booking: ")
+    memberID = int(input())
+    if memberID in golfClub.golfers:
+        cancelTime = golfClub.searchBooking(memberID)
+        golfClub.cancelBooking(cancelTime)
+        print("Tee Time {} cancelled successfully".format(cancelTime))
+    else:
+        print("Invalid member ID")
+        cancelBooking(golfClub)
+
+
+def displayMenu(golfClub):
     print("""
 Golf Booking for {} Sunday
 ======================================
@@ -64,18 +76,18 @@ Enter option: """.format(golfClub.golfingDate.strftime("%A")))
     if selection == 1:
         submitBooking(golfClub)
     elif selection == 2:
-        cancel_booking()
+        cancelBooking(golfClub)
     elif selection == 3:
-        edit_booking()
+        editBooking(golfClub)
     elif selection == 4:
-        print_play_schedule()
+        playSchedule(golfClub)
     elif selection == 5:
-        overview_tee_schedule()
+        teeSchedule(golfClub)
     elif selection == 0:
         exit()
     else:
         print("Invalid option")
-        display_menu()
+        displayMenu(golfClub)
 
 
 if __name__ == "__main__":
@@ -99,4 +111,4 @@ if __name__ == "__main__":
         9), golfClub.searchGolfer(27), golfClub.searchGolfer(24)])
     golfClub.addBooking("07:58", flight3)
 
-    display_menu(golfClub)
+    displayMenu(golfClub)
