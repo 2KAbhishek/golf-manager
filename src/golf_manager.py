@@ -60,6 +60,33 @@ def cancelBooking(golfClub):
         cancelBooking(golfClub)
 
 
+def editBooking(golfClub):
+    print("Enter tee time (HH:MM) to edit booking: ")
+    teeTime = input()
+    if teeTime in golfClub.bookings:
+        flight = golfClub.bookings[teeTime]
+        print("""
+Current flight of golfers {} will be replaced by a new flight
+Confirm to replace? (Y/N): """.format(flight.golfers))
+        selection = input()
+        if selection == 'y':
+            print("Enter 3 or 4 golfers to form a flight")
+            golfers = []
+            for i in range(3):
+                print("Enter ID for golfer {} or -1 to stop: ".format(i+1))
+                id = int(input())
+                if id == -1:
+                    break
+                golfers.append(golfClub.searchGolfer(id))
+            flight = Flight(golfers)
+            golfClub.canBooking(teeTime)
+            golfClub.addBooking(teeTime, flight)
+            print("Flight with golfers {} updated successfully".format(golfers))
+    else:
+        print("Invalid tee time")
+        editBooking(golfClub)
+
+
 def displayMenu(golfClub):
     print("""
 Golf Booking for {} Sunday
