@@ -98,6 +98,16 @@ def printPlaySchedule(golfClub):
         printPlaySchedule(golfClub)
 
 
+def overviewTeeSchedule(golfClub):
+    print("""
+Overview of Tee Schedule
+===========================
+""")
+    for teeTime, flight in golfClub.bookings.items():
+        print("{}. {}".format(teeTime, flight))
+    displayMenu(golfClub)
+
+
 def displayMenu(golfClub):
     print("""
 Golf Booking for {} Sunday
@@ -120,7 +130,7 @@ Enter option: """.format(golfClub.golfingDate.strftime("%A")))
     elif selection == 4:
         printPlaySchedule(golfClub)
     elif selection == 5:
-        teeSchedule(golfClub)
+        overviewTeeSchedule(golfClub)
     elif selection == 0:
         exit()
     else:
