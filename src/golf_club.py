@@ -90,7 +90,7 @@ class GolfClub:
             if flight == None:
                 result += teeTime + " - no booking\n"
             else:
-                result += teeTime + " - " + str(flight.memberID) + "\n"
+                result += teeTime + " - " + str(flight.getGolfersID()) + "\n"
         return result
 
     def getEmptyTeeTimes(self):
