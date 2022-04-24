@@ -1,3 +1,5 @@
+from golfer import Golfer
+
 class HandicappedGolfer(Golfer):
     def __init__(self, name, membership):
         super().__init__(name, membership)
@@ -7,4 +9,4 @@ class HandicappedGolfer(Golfer):
         return self._handicap
 
     def __str__(self):
-        return str(super(HandicappedGolfer, self)) + " Handicap: {}".format(self._handicap)
+        return super().__str__() + " Handicap: {}".format(self._handicap)
