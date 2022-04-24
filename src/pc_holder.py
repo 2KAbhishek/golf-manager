@@ -1,10 +1,11 @@
 import datetime
 from golfer import Golfer
 
+
 class PCHolder(Golfer):
-    def __init__(self, name, membership):
+    def __init__(self, name, membership, expiryDate):
         super().__init__(name, membership)
-        self._expiryDate = None
+        self._expiryDate = expiryDate
 
     def getMembershipStatus(self):
         if self._expiryDate == None:
