@@ -108,4 +108,6 @@ Hit the ⭐ button if you found this useful.
 
 <a href="https://github.com/2KAbhishek/golf-manager">Source</a> | <a href="https://2kabhishek.github.io/golf-manager">Website</a>
 
+[Golf on Wikipedia](https://en.wikipedia.org/wiki/Golf)
+
 </div>
