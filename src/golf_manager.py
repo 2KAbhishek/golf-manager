@@ -12,7 +12,7 @@ Enter 3 or 4 golfers to form a flight
 =====================================
 """)
     golfers = []
-    for i in range(3):
+    for i in range(4):
         print("Enter ID for golfer {} or -1 to stop: ".format(i+1))
         id = int(input())
         if id == -1:
@@ -23,16 +23,15 @@ Enter 3 or 4 golfers to form a flight
 List of available tee times
 =========================
 """)
-    for index, teeTime in enumerate(golfClub.getEmptyTeeTimes()):
+    availableTimes = golfClub.getEmptyTeeTimes()
+    for index, teeTime in enumerate(availableTimes):
         print("{}. {}".format(index, teeTime))
 
     print("Enter option: ")
-    selection = int(input())
-    if selection in golfClub.teeTimes:
-        if golfClub.searchBooking(flight.teeTime) != None:
-            raise GolfingException("Tee time is already booked")
-        for memberID, golfer in golfClub.golfers.items():
-            if golfer.booking != None:
+    selection = availableTimes[int(input())]
+    try:
+        for golfer in flight.getGolfersID():
+            if golfClub.searchMemberBooking(golfer) != None:
                 raise GolfingException(
                     "Booking has failed as one member already has another booking")
         if golfClub.golfingDate.weekday() == 5 or golfClub.golfingDate.weekday() == 6:
@@ -41,9 +40,10 @@ List of available tee times
                     "Booking has failed as flight is not eligible to play on weekend")
         golfClub.addBooking(selection, flight)
         print("Tee time {} booked for flight with golfers {}".format(
-            selection, golfers))
+            selection, flight.getGolfersID()))
         displayMenu(golfClub)
-    else:
+    except GolfingException as e:
+        print(e)
         print("Invalid option")
         submitBooking(golfClub)
 
@@ -83,7 +83,8 @@ Confirm to replace? (Y/N): """.format(flight.getGolfersID()))
             flight = Flight(golfers)
             golfClub.cancelBooking(teeTime)
             golfClub.addBooking(teeTime, flight)
-            print("Flight with golfers {} updated successfully".format(flight.getGolfersID()))
+            print("Flight with golfers {} updated successfully".format(
+                flight.getGolfersID()))
             displayMenu(golfClub)
     except GolfingException as e:
         print(e)
