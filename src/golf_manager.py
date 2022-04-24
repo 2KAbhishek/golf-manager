@@ -143,7 +143,8 @@ if __name__ == "__main__":
     fileName = "../data/" + input("Enter course file name: ")
     course = Course(fileName)
 
-    golfingDate = datetime.strptime(input("Enter golfing date in dd/mm/yyyy: "), "%d/%m/%Y")
+    golfingDate = datetime.strptime(
+        input("Enter golfing date in dd/mm/yyyy: "), "%d/%m/%Y")
     golfClub = GolfClub("Fantasy Golf", course, golfingDate)
 
     golfClub.setupGolfers("../data/Golfers.txt")
