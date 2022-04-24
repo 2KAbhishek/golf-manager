@@ -4,7 +4,7 @@ from hole import Hole
 
 class Course:
     def __init__(self, filename):
-        self._name = filename.split(".")[0]
+        self._name = filename.split(".")[-2].split("/")[-1]
         self._holes = []
         self._totalPar = 0
         self._readFile(filename)
