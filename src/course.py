@@ -43,3 +43,12 @@ class Course:
             out += "{}\t {}\t {}\t {}\n".format(
                 i+1, hole.getPar(), hole.getIndex(), hole.getDistance())
         return out
+
+
+if __name__ == "__main__":
+    augusta = Course("../data/Augusta.txt")
+    laguna = Course("../data/Laguna.txt")
+    # print the play schedule for tee time “07:08”
+    augusta.getPlaySchedule(datetime.datetime(2022, 1, 1, 7, 8))
+    # print the play schedule for tee time “09:18”
+    laguna.getPlaySchedule(datetime.datetime(2022, 1, 1, 9, 18))
