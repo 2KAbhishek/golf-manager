@@ -57,7 +57,7 @@ class GolfClub:
 
     def searchMemberBooking(self, memberID):
         for teeTime, flight in self._bookings.items():
-            if flight != None and flight.memberID == memberID:
+            if flight != None and memberID in flight.getGolfersID():
                 return teeTime
         return None
 
@@ -66,12 +66,12 @@ class GolfClub:
             raise GolfingException("There is no such tee time")
         if self._bookings[teeTime] != None:
             raise GolfingException("Tee time is already booked")
-        for memberID, golfer in self._golfers:
-            if golfer.booking != None:
+        for golfer in flight.getGolfersID():
+            if self.searchMemberBooking(golfer) != None:
                 raise GolfingException(
                     "Booking has failed as one member already has another booking")
         if self._golfingDate.weekday() == 5 or self._golfingDate.weekday() == 6:
-            if not flight.eligibleToPlayOnWeekend:
+            if not flight.getWeekendEligibility():
                 raise GolfingException(
                     "Booking has failed as flight is not eligible to play on weekend")
         self._bookings[teeTime] = flight
