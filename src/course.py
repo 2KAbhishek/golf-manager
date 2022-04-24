@@ -13,11 +13,13 @@ class Course:
         """Read the file and create the holes"""
         with open(filename, 'r') as f:
             lines = f.readlines()
-            for line in lines:
+            for i, line in enumerate(lines):
                 line = line.strip()
                 if line:
-                    self._holes.append(Hole(*line.split()))
-                    self._totalPar += int(line.split()[1])
+                    par, index, distance = line.split(',')
+                    self._totalPar += int(par)
+                    self._holes.append(
+                        Hole(i, int(par), int(distance), int(index)))
 
     @property
     def name(self):
