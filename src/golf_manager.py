@@ -111,7 +111,7 @@ Overview of Tee Schedule
 
 def displayMenu(golfClub):
     print("""
-Golf Booking for {} Sunday
+Golf Booking for {}
 ======================================
 1. Submit Booking
 2. Cancel Booking
@@ -119,7 +119,7 @@ Golf Booking for {} Sunday
 4. Print Play Schedule
 5. Overview of Tee Schedule
 0. Exit
-Enter option: """.format(golfClub.golfingDate.strftime("%A")))
+Enter option: """.format(golfClub.golfingDate.strftime("%d/%m/%Y %A")))
 
     selection = int(input())
     if selection == 1:
