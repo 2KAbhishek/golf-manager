@@ -92,10 +92,12 @@ Confirm to replace? (Y/N): """.format(flight.golfers))
 def printPlaySchedule(golfClub):
     print("Enter member ID to print play schedule: ")
     memberID = int(input())
-    if memberID in golfClub.golfers:
+    try:
         teeTime = golfClub.searchMemberBooking(memberID)
         print(golfClub.course.getPlaySchedule(teeTime))
-    else:
+        displayMenu(golfClub)
+    except GolfingException as e:
+        print(e)
         print("Invalid member ID")
         printPlaySchedule(golfClub)
 
