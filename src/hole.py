@@ -27,8 +27,8 @@ class Hole:
             range(501, 9999): 360,
         })
 
-        setupTime = getSetupTime(self._index)
-        playTime = getPlayTime(self._distance)
+        setupTime = getSetupTime[self._index]
+        playTime = getPlayTime[self._distance]
 
         return setupTime + playTime
 
