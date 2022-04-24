@@ -30,9 +30,9 @@ class Course:
         print("Tee Off Time: {}".format(teeTime))
         print("Course: {} \t\t Total PAR: {}".format(self._name, self._totalPar))
         print("Hole\t PAR\t Index\t Distance\t Start\t Finish")
-        for i, hole in enumerate(self._holes):
-            print("{}\t {}\t {}\t {}\t {}\t {}".format(i+1, hole.getPar(), hole.getIndex(),
-                  hole.getDistance(), teeTime, teeTime + datetime.timedelta(seconds=hole.getDuration())))
+        for hole in self._holes:
+            print("{}\t {}\t {}".format(hole, teeTime, teeTime +
+                  datetime.timedelta(seconds=hole.getDuration())))
 
     def __str__(self):
         """String representation of the course"""
