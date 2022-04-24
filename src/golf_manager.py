@@ -29,24 +29,23 @@ List of available tee times
     print("Enter option: ")
     selection = int(input())
     if selection in golfClub.teeTimes:
+        if golfClub.searchBooking(flight.teeTime) != None:
+            raise GolfingException("Tee time is already booked")
+        for memberID, golfer in golfClub.golfers.items():
+            if golfer.booking != None:
+                raise GolfingException(
+                    "Booking has failed as one member already has another booking")
+        if golfClub.golfingDate.weekday() == 5 or golfClub.golfingDate.weekday() == 6:
+            if not flight.getWeekendEligibility():
+                raise GolfingException(
+                    "Booking has failed as flight is not eligible to play on weekend")
         golfClub.addBooking(selection, flight)
         print("Tee time {} booked for flight with golfers {}".format(
             selection, golfers))
+        displayMenu(golfClub)
     else:
         print("Invalid option")
         submitBooking(golfClub)
-
-    if golfClub.searchBooking(flight.teeTime) != None:
-        raise GolfingException("Tee time is already booked")
-    for memberID, golfer in golfClub.golfers.items():
-        if golfer.booking != None:
-            raise GolfingException(
-                "Booking has failed as one member already has another booking")
-    if golfClub.golfingDate.weekday() == 5 or golfClub.golfingDate.weekday() == 6:
-        if not flight.getWeekendEligibility():
-            raise GolfingException(
-                "Booking has failed as flight is not eligible to play on weekend")
-    golfClub.bookings[flight.teeTime] = flight
 
 
 def cancelBooking(golfClub):
@@ -56,6 +55,7 @@ def cancelBooking(golfClub):
         cancelTime = golfClub.searchBooking(memberID)
         golfClub.cancelBooking(cancelTime)
         print("Tee Time {} cancelled successfully".format(cancelTime))
+        displayMenu(golfClub)
     else:
         print("Invalid member ID")
         cancelBooking(golfClub)
@@ -83,6 +83,7 @@ Confirm to replace? (Y/N): """.format(flight.golfers))
             golfClub.canBooking(teeTime)
             golfClub.addBooking(teeTime, flight)
             print("Flight with golfers {} updated successfully".format(golfers))
+            displayMenu(golfClub)
     else:
         print("Invalid tee time")
         editBooking(golfClub)
@@ -104,8 +105,7 @@ def overviewTeeSchedule(golfClub):
 Overview of Tee Schedule
 ===========================
 """)
-    for teeTime, flight in golfClub.bookings.items():
-        print("{}. {}".format(teeTime, flight))
+    print(golfClub.getBookings())
     displayMenu(golfClub)
 
 
