@@ -87,6 +87,17 @@ Confirm to replace? (Y/N): """.format(flight.golfers))
         editBooking(golfClub)
 
 
+def printPlaySchedule(golfClub):
+    print("Enter member ID to print play schedule: ")
+    memberID = int(input())
+    if memberID in golfClub.golfers:
+        teeTime = golfClub.searchMemberBooking(memberID)
+        print(golfClub.course.getPlaySchedule(teeTime))
+    else:
+        print("Invalid member ID")
+        printPlaySchedule(golfClub)
+
+
 def displayMenu(golfClub):
     print("""
 Golf Booking for {} Sunday
@@ -107,7 +118,7 @@ Enter option: """.format(golfClub.golfingDate.strftime("%A")))
     elif selection == 3:
         editBooking(golfClub)
     elif selection == 4:
-        playSchedule(golfClub)
+        printPlaySchedule(golfClub)
     elif selection == 5:
         teeSchedule(golfClub)
     elif selection == 0:
