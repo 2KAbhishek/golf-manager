@@ -1,3 +1,4 @@
+from datetime import datetime
 from course import Course
 from flight import Flight
 from golf_club import GolfClub
@@ -142,7 +143,7 @@ if __name__ == "__main__":
     fileName = "../data/" + input("Enter course file name: ")
     course = Course(fileName)
 
-    golfingDate = input("Enter golfing date in dd/mm/yyyy: ")
+    golfingDate = datetime.strptime(input("Enter golfing date in dd/mm/yyyy: "), "%d/%m/%Y")
     golfClub = GolfClub("Fantasy Golf", course, golfingDate)
 
     golfClub.setupGolfers("../data/Golfers.txt")
