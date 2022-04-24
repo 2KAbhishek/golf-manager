@@ -51,12 +51,13 @@ List of available tee times
 def cancelBooking(golfClub):
     print("Enter member ID to cancel booking: ")
     memberID = int(input())
-    if memberID in golfClub.golfers:
-        cancelTime = golfClub.searchBooking(memberID)
+    try:
+        cancelTime = golfClub.searchMemberBooking(memberID)
         golfClub.cancelBooking(cancelTime)
         print("Tee Time {} cancelled successfully".format(cancelTime))
         displayMenu(golfClub)
-    else:
+    except GolfingException as e:
+        print(e)
         print("Invalid member ID")
         cancelBooking(golfClub)
 
