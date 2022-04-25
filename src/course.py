@@ -37,6 +37,20 @@ class Course:
                   datetime.timedelta(seconds=hole.getDuration())).strftime("%H:%M")))
             teeDateTime += datetime.timedelta(seconds=hole.getDuration())
 
+    def getScheduleStr(self, teeTime):
+        """Return play schedule as a string"""
+        teeDateTime = datetime.datetime.strptime(teeTime, "%H:%M")
+        out = "Course: {}\n".format(self._name)
+        out += "Tee Off Time: {} \t\t Total PAR: {}\n".format(
+            teeTime, self._totalPar)
+        out += "Hole\t PAR\t Index\t Distance\t Start\t Finish\n"
+        for hole in self._holes:
+            out += "{}\t {}\t {}\n"\
+                .format(hole, teeDateTime.strftime("%H:%M"),
+                        (teeDateTime + datetime.timedelta
+                         (seconds=hole.getDuration())).strftime("%H:%M"))
+            teeDateTime += datetime.timedelta(seconds=hole.getDuration())
+        return out
 
     def __str__(self):
         """String representation of the course"""
