@@ -21,3 +21,10 @@ def clearFields():
     scroll.delete(1.0, END)
 
 
+if __name__ == "__main__":
+    root = tk.Tk()
+    root.title("Golf Schedule")
+    root.geometry("360x640")
+
+
+    root.mainloop()
