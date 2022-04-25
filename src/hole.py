@@ -34,4 +34,4 @@ class Hole:
 
     def __str__(self):
         """String representation of the hole"""
-        return "{}\t{}\t{}\t{}".format(self._number, self._par, self._index, self._distance)
+        return "{}\t{}\t{}\t{}m".format(self._number, self._par, self._index, self._distance)
