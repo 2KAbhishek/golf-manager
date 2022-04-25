@@ -54,4 +54,12 @@ if __name__ == "__main__":
                      value="Pebble_Bay.txt")
     R3.grid(row=3, column=1, padx=10, pady=10)
 
+    # Create a button
+    button = Button(root, text="Show Schedule", command=showSchedule)
+    button.grid(row=4, column=0, padx=10, pady=10)
+
+    # Create a button
+    button = Button(root, text="Clear", command=clearFields)
+    button.grid(row=4, column=1, padx=10, pady=10)
+
     root.mainloop()
