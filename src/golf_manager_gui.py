@@ -17,3 +17,7 @@ def showSchedule():
         scroll.insert(INSERT, "Please enter valid input")
 
 
+def clearFields():
+    scroll.delete(1.0, END)
+
+
