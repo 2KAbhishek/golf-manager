@@ -26,5 +26,14 @@ if __name__ == "__main__":
     root.title("Golf Schedule")
     root.geometry("360x640")
 
+    # Create a label
+    label = Label(root, text="Tee Time: (HH:MM)")
+    label.grid(row=0, column=0, padx=10, pady=10)
+
+    # Create a text entry box
+    teeTimeEntry = Entry(root)
+    teeTimeEntry.grid(row=0, column=1, padx=10, pady=10)
+    teeTimeEntry.insert(0, "07:08")
+
 
     root.mainloop()
