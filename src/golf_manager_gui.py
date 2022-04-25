@@ -62,4 +62,13 @@ if __name__ == "__main__":
     button = Button(root, text="Clear", command=clearFields)
     button.grid(row=4, column=1, padx=10, pady=10)
 
+    # Create a ScrolledText widget
+    scrollW = 50
+    scrollH = 20
+    scroll = scrolledtext.ScrolledText(
+        root, width=scrollW, height=scrollH)
+    scroll.grid(column=0, columnspan=20, padx=10, pady=10)
+    scrollFont = tkFont.Font(size=8)
+    scroll.configure(font=scrollFont)
+
     root.mainloop()
