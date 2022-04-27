@@ -67,6 +67,9 @@ if __name__ == "__main__":
     augusta = Course("../data/Augusta.txt")
     laguna = Course("../data/Laguna.txt")
     # print the play schedule for tee time “07:08”
-    augusta.getPlaySchedule(datetime.datetime(2022, 1, 1, 7, 8))
+    augusta.getPlaySchedule("07:08")
+    laguna.getPlaySchedule("07:08")
+
     # print the play schedule for tee time “09:18”
-    laguna.getPlaySchedule(datetime.datetime(2022, 1, 1, 9, 18))
+    augusta.getPlaySchedule("09:18")
+    laguna.getPlaySchedule("09:18")
