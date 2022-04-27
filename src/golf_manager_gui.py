@@ -33,7 +33,6 @@ if __name__ == "__main__":
     # Create a text entry box
     teeTimeEntry = Entry(root)
     teeTimeEntry.grid(row=0, column=1, padx=10, pady=10)
-    teeTimeEntry.insert(0, "07:08")
 
     # Create a label
     label = Label(root, text="Course:")
