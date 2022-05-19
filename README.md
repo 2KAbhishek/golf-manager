@@ -26,7 +26,7 @@
 <h3>Short sweet headline with 🎇🎉</h3>
 
 <figure>
-  <img src= "https://raw.githubusercontent.com/2KAbhishek/golf-manager/main/images/screenshot.jpg" alt="golf-manager Demo" style="width:100%">
+  <img src= "images/screenshot.jpg" alt="golf-manager Demo" style="width:100%">
   <br/>
   <figcaption>golf-manager screenshot</figcaption>
 </figure>
