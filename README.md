@@ -1,6 +1,6 @@
 <div align = "center">
 
-<h1><a href="https://2kabhishek.github.io/golf-manager">golf-manager</a></h1>
+<h1><a href="https://2kabhishek.github.io/golf-manager">Golf Manager</a></h1>
 
 <a href="https://github.com/2KAbhishek/golf-manager/blob/main/LICENSE">
 <img alt="License" src="https://img.shields.io/github/license/2kabhishek/golf-manager?style=plastic&color=white&label=License"> </a>
@@ -23,7 +23,7 @@
 <a href="https://github.com/2KAbhishek?tab=followers">
 <img alt="Followers" src="https://img.shields.io/github/followers/2kabhishek?color=222&style=plastic&label=Followers"> </a>
 
-<h3>Short sweet headline with 🎇🎉</h3>
+<h3>Manage your golf empire ⛳🏌</h3>
 
 <figure>
   <img src= "images/screenshot.jpg" alt="golf-manager Demo" style="width:100%">
@@ -35,17 +35,18 @@
 
 ## What is this
 
-golf-manager is a `<utility/tool/feature>` that allows `<insert_target_audience>` to do `<action/task_it_does>`.
+Golf manager is a CLI and GUI application that helps you manage your fictional golf empire.
+It uses OOP principles to create the different models and uses `tkinter` for the GUI.
 
 ## Inspiration
 
-golf-manager was inspired by `<reason/idea>`.
+Wanted to learn more about Golf and was in the mood for some `python`.
 
 ## Prerequisites
 
 Before you begin, ensure you have met the following requirements:
 
-- You have installed the latest version of `<coding_language/dependency/requirement_1>`
+- You have installed the latest version of `python` and `tkinter`.
 
 ## Getting golf-manager
 
@@ -54,51 +55,27 @@ To install golf-manager, follow these steps:
 ```bash
 git clone https://github.com/2kabhishek/golf-manager
 cd golf-manager
-<install_command>
 ```
 
 ## Using golf-manager
 
-```bash
-USAGE:
-    command [FLAGS] [OPTIONS]
-
-FLAGS:
-    -h, --help              Prints help information.
-
-OPTIONS:
-    -o, --option <value>    Option description.
-    Options are: a, b. [default: a]
-
-Example:
-
-
-```
+To run the CLI version run [golf_manager.py](./src/golf_manager.py)
+To run the GUI version run [golf_manager_gui.py](./src/golf_manager_gui.py)
+The data is stored in the [data](./data/) directory.
 
 ## How it was built
 
-golf-manager was built using `<tech/library>`
+golf-manager was built using `python` and `tkinter`.
 
 ## Challenges faced
 
-While building golf-manager the main challenges were `<issue/difficulty>`
+Figuring out the structure and design of the application was a challenge.
 
 ## What I learned
 
-While building golf-manager I `<learned/accomplished>` about `<learning/accomplishment>`
-
-## What's next
-
-Planning to add `<feature/module>`.
-
-### To-Do
-
-- [x] Setup repo
-- [ ] Think real hard
-- [ ] Start typing
-- [ ] Change me
-- [ ] Update README
-- [ ] Finish it
+- Explored OOP in depth using Python.
+- Used `tkinter` to create the GUI.
+- Created custom [switch](./src/switch.py) in python.
 
 Hit the ⭐ button if you found this useful.
 
